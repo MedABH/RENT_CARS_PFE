@@ -1,0 +1,433 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+.btn-custom {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+.btn-custom:hover {
+  background-color: #45a049; /* Darker Green */
+}
+  
+
+.cadre{
+    border: 0px solid;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 50px;
+   padding: 10px;
+   color: aliceblue;
+   
+}
+.Row{
+    display: flex;
+}
+.navbar .navbar-brand{
+    margin-right: 50px;
+}
+.navh a:hover{
+    color: aliceblue;
+}
+/****************** page d acceuill *************************/
+.header1{
+    height: 500px;
+    width: 100%;
+    background:no-repeat url("images/mer.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+.centered-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.date{
+   
+   margin-top: 15px;
+}
+.encharge{
+   display: inline-block;
+    
+    padding: 10px;
+}
+#encharge{
+    margin-left: 15px;
+}
+#lieu{
+   
+    width: 95%;
+    padding: 7px;
+    border-radius: 5px;
+    outline:rgb(255,0.0) dashed 1px ;
+}
+
+
+#checkty{
+   
+    width: 20px;
+    padding: 7px;
+    border-radius: 5px;
+    outline:rgb(255,0.0) dashed 1px ;}
+#mois{
+   
+        width: 150px;
+        padding: 7px;
+        border-radius: 5px;
+        outline:rgb(255,0.0) dashed 1px ;}
+#chercher{
+    width: 95%;
+        padding: 7px;
+        border-radius: 5px;
+        outline:rgb(255,0.0) dashed 1px ;
+}
+#formcenter{
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+#lieu1{ 
+    width: 100%;
+    padding: 7px;
+    border-radius: 5px;
+    outline:rgb(255,0.0) dashed 1px ;
+    
+
+}
+.date input{
+    padding: 6px;
+    border-radius: 5px;
+}
+.date select{
+    padding: 6px;
+    border-radius: 5px;
+}
+.date #time{
+    margin-left: 15px;
+}
+.formElem{
+    height: 300px;
+    width: auto;
+   margin-left: 100px;
+   margin-top: 100px;
+   margin-bottom: 50px;
+   background-color: rgba(18, 19, 18, 0.596);
+  background-position: 0% 0%;
+   color: black;
+   position: absolute;
+}
+.reservation-item{
+    margin-top: 15px;
+    margin-left: 20px;
+   
+}
+.prise{
+  position: relative;
+  top: 50%;
+  left: 40%;
+    transform: translate3d(50%,50%,50%);
+   margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(247, 247, 247);
+    border: 0px solid;
+    flex-shrink: 0;
+    margin: 10px 3px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+}
+.prise span{
+    font-size: xx-large;
+    font-weight: 400;
+}
+
+.prise1 p{
+   
+    color: rgb(248, 249, 250);
+    font-size: 1.2em;
+    font-weight: 500;
+   text-align: center;
+}
+.encharge input[type="button"]{
+    color: aliceblue;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 8px;
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 60%;
+}
+.contener{
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0px;
+    display: block;
+    justify-content: center;
+
+}
+.carlist{
+    display: flex;
+    height: 248px;
+   
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-top: 15px;
+    padding-left: 20px;
+   
+}
+
+.item-cat{
+   
+    height: 240px;
+   
+    transition: 1s ease;
+    margin-top: 5px;
+    margin-left: 20px;
+    width: 270px;
+    font-size: 1.2em;
+    font-weight: 600;
+    box-shadow: 1px 1px rgba(111, 112, 111, 0.596);
+   
+}
+.item-cat  a img{
+    transition: 1s ease ease-in-out;
+
+}
+.item-cat  a img:hover{
+    transform: scale(1,1);
+  
+   
+}
+.item-cat img{
+    /*width: 150px;*/
+    height: 150px;
+}
+.item-cat p{
+    align-items: flex-end;
+}
+.item-cat h3{
+    text-align: center;
+}
+.item-cat p span{
+    border-radius: 5px;
+    padding: 2px;
+    background-color:#0B9906;
+}
+
+
+/* ***************** footer ***************/
+.footertab{
+    margin-left: 20px;
+    flex: 3;
+    display: inline-flex;
+    padding: 30px;
+    border-right: 1px solid;
+}
+.footertab p{
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.footertab .tel{
+    float: left;
+    font-size: 4em;
+    font-weight: 800;
+    margin-right: 20px;
+}
+/* data reservation **** */
+/* *****----+++ information de reservation ++++----****** */
+.data-grp{
+    width: 400px;
+    border: 0px solid;
+    background-color: #0B9906;
+    padding: 10px;
+    text-align: center;
+}
+.data-reservation{
+    display: flex;
+    justify-content: center;
+   
+}
+#temps{
+    font-size: 1em;
+    font-weight: 600;
+}
+.reservation{
+  
+   
+    margin-left: 15px;
+    margin-top: 20px;
+   
+}
+.data-reser-item{
+    display: block;
+    border: 1px solid grey;
+    padding: 12px;
+   font-size: 1em;
+   font-weight: 600;
+}
+.date-charge{
+    display: block;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/*----- */
+@media( max-width: 1024px){
+   
+    .footertab{
+        display: block;
+        border-bottom: 1px solid;
+        padding: 5px;
+    }
+    .Row{
+        display: block;
+    }
+    .formElem{
+        height: auto;
+        width: 100%;
+       margin-left: 0;
+      margin-right: 0;
+       margin-top: 10px;
+       
+    }
+
+    }
+    body{
+        font-size: 12px;
+    }
+    .tel{
+        font-size: 10px;
+    }
+    .tel svg{
+       width: 20px;
+       height: 20px;
+    }
+    .fas{
+        font-size: 20px;
+    }
+    /****************************/
+    .carlist{
+        width: 100%;
+        height: auto;
+       display:block;  
+    }
+    
+    .carlist :nth-child(5){
+        display: none;
+    }
+    .data-reservation{
+        display: block;
+      
+        margin-right: 20px;
+
+    }
+    .centener1{
+        display: block;
+        margin-right: 20px;
+    }
+    .data-grp{
+        width: 100%;
+       
+    }
+    .reservation{
+        display: block;
+    }
+   
+}/************************************* Media ********/
+
+.carousel-item{
+    height: 200px;
+
+}
+.carousel-caption{
+    color: black;
+}
+.footerta a {
+   display: inline-flex;
+    color: white;
+    font-size: 1em;
+    font-weight: 100;
+    text-decoration: none;
+    padding-left: 10px;
+
+}
+
+.footer :nth-child(3){
+    border-right: 0px solid;
+}
+.footerta{
+    float: right;
+    margin-right: 100px;
+}
+.numerotel{
+    font-weight: 600;
+    font-size: 1.2em;
+}
+.pfot{
+    
+    font-weight: 400;
+    font-size: 1.2em;
+    margin-bottom: 0;
+}
+.contact span{
+    font-weight: 600;
+    font-size: 1.2em;
+}
+.contact{
+   display: flex;
+   margin-bottom: 10px;
+ 
+}
+.compl{
+    display: flex;
+    background-color: black;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap-reverse;
+}
+.contact a{
+    margin-right: 15px;
+    margin-bottom: 15px;
+    color: white;
+   text-decoration: none;
+    
+}
+.contact a .fac{
+   
+    font-size: xx-large;
+    font-weight: 800;
+}
+/*********************** fin footer******************************** */
+.text{
+    justify-content: center;
+     margin-top: 20px;
+     margin-left: 20%;
+     box-shadow: 3px 3px rgb(245, 245, 245), -1em 0 .4em rgb(241, 241, 239);
+     border: 0px solid;
+    background-color: rgb(240, 226, 147);
+    border-radius: 20px;
+     width: 50%;
+     text-align: center;
+     padding: 10px;
+     font-weight: 500;
+}
