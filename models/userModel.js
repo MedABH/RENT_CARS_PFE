@@ -18,9 +18,11 @@ const userSchema = new mongoose.Schema({
           validate: [validateEmail, 'Please fill a valid email address']
      },
      password: { type: String, required: true },
-     carteb: { type: Boolean, required: false },
+     carteb: { type: String, required: false },
      cartenf: { type: String, required: false },
      cartenb: { type: String, required: false },
+     city: { type: String, required: false},
+     address: { type: String, required: false},
      reg: { type: String, required: false },
      accepted: { type: Boolean, required: true }
 });

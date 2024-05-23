@@ -22,7 +22,7 @@ const Product = () => {
   const cardItem = (car) => {
     return (
       <div className="card my-5 py-4" key={car._id} style={{ width: "18rem" }}>
-        <img src={car.image} className="card-img-top" alt={car.name} />
+        <img src={car.image} className="card-img-top" alt={car.name} style={{height:'', width:''}} />
         <div className="card-body text-center">
           <h5 className="card-title" style={{ color: 'white' }}>{car.name}</h5>
           <p className="lead" style={{ color: 'white' }}>{car.rentPerDay} MAD per day</p>

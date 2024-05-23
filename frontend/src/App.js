@@ -10,6 +10,7 @@ import SignUp from "./pages/profiles/SignUp";
 import ClientProfile from "./pages/profiles/ClientProfile";
 import AddCarDashboard from "./pages/profiles/AddCarDashboard";
 import AgenceProfile from "./pages/profiles/AgenceProfile";
+import CarDetail from "./pages/detail/CarDetail";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/client-profile" element={<ClientProfile/>}></Route>
           <Route path="/agence-profile" element={<AgenceProfile/>} />
           <Route path="/add-car" element={<AddCarDashboard/>} />
+          <Route path="/cars/:id" element={<CarDetail />} />
         </Routes>
       </div>
       <div>

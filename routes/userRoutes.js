@@ -1,12 +1,14 @@
 const express = require('express');
-const { getAllUsers, getUserById, createUser, updateUser, deleteUser } = require('../controllers/userController');
-
 const router = express.Router();
+const userController = require('../controllers/userController');
+const multer = require('multer');
+const upload = multer(); // Memory storage for multer
 
-router.get('/', getAllUsers);
-router.get('/:id', getUserById);
-router.post('/', createUser);
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
+// Route Definitions
+router.get('/', userController.getAllUsers);
+router.get('/:id', userController.getUserById);
+router.post('/', upload.single('reg'), userController.createUser);
+router.put('/:id', userController.updateUser);
+router.delete('/:id', userController.deleteUser);
 
 module.exports = router;

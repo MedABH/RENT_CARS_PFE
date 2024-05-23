@@ -15,7 +15,7 @@ const SignUp = () => {
     cartenf: '',
     cartenb: '',
     reg: '',
-    accepted: '',
+    accepted: false,
   });
 
   const handleChange = (e) => {
@@ -40,18 +40,17 @@ const SignUp = () => {
     }
   
     try {
-      const response = await axios.post('http://localhost:3000/api/users', data, {
+      const response = await axios.post("http://localhost:3000/api/users", data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       console.log(response.data);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error.response.data);
     }
   };
   
-
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setFormData({ ...formData, reg: file });
@@ -147,19 +146,6 @@ const SignUp = () => {
             required
           />
         </Form.Group>
-
-        {/*{formData.checkt === 'entreprise' && (
-          <Form.Group controlId="carteBank">
-            <Form.Label>Formulaire de Paiement</Form.Label>
-            <Form.Control
-              type="text"
-              name="carteb"
-              value={formData.carteb}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
-        )}*/}
 
         {formData.checkt === 'entreprise' && (
           <Form.Group controlId="image">
