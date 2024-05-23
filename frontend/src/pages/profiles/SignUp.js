@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    checkt: '',
+    checkt: 'client',
     name: '',
     nameagence: '',
     nump: '',
@@ -28,13 +28,29 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    const data = new FormData();
+    for (const key in formData) {
+      data.append(key, formData[key]);
+    }
+  
+    // Log the form data to the console
+    for (let pair of data.entries()) {
+      console.log(`${pair[0]}, ${pair[1]}`);
+    }
+  
     try {
-      const response = await axios.post('http://localhost:3000/api/users', formData);
+      const response = await axios.post('http://localhost:3000/api/users', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       console.log(response.data);
     } catch (error) {
       console.error('Error:', error);
     }
   };
+  
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -43,15 +59,24 @@ const SignUp = () => {
 
   return (
     <Container className="mt-5">
-      <br/>
+      <br />
       <Form onSubmit={handleSubmit}>
-        <div className='row' style={{width:'100%', height:'80px'}}>
-          <div className='col' style={{ backgroundColor: '', width:'100%', height:'50%'}}>
-            <button name="checkt" onClick={() => setFormData({ ...formData, checkt: 'client' })} className='col-5' style={{color:'white', border:'1', borderColor:'black', width:'40%', marginRight:'54px', marginLeft:'54px', height:'100%'}}>Client</button>
-            <button name="checkt" onClick={() => setFormData({ ...formData, checkt: 'entreprise' })} className='col-5' style={{color:'white', border:'1', borderColor:'black', width:'40%', marginLeft:'54px', marginRight:'54px', height:'100%'}}>Agence</button>
+        <div className='row' style={{ width: '100%', height: '80px' }}>
+          <div className='col' style={{ backgroundColor: '', width: '100%', height: '50%' }}>
+            <button name="checkt" onClick={() => setFormData({ ...formData, checkt: 'client' })} className='col-5 btn-custom' style={{
+              backgroundColor: 'red',
+              color: 'white',
+              border: '1px solid black',
+              width: '40%',
+              marginRight: '54px',
+              marginLeft: '54px',
+              height: '100%'
+            }}>Client</button>
+            <button name="checkt" onClick={() => setFormData({ ...formData, checkt: 'entreprise' })} className='col-5 btn-custom' style={{backgroundColor: 'red', color: 'white', border: '1 solid black', width: '40%', marginLeft: '54px', marginRight: '54px', height: '100%' }}>Agence</button>
           </div>
         </div>
-
+        
+        {formData.checkt === 'client' && (
         <Form.Group controlId="fullName">
           <Form.Label>Full Name</Form.Label>
           <Form.Control
@@ -62,6 +87,7 @@ const SignUp = () => {
             required
           />
         </Form.Group>
+        )}
 
         {formData.checkt === 'entreprise' && (
           <Form.Group controlId="agenceName">
@@ -122,7 +148,7 @@ const SignUp = () => {
           />
         </Form.Group>
 
-        {formData.checkt === 'entreprise' && (
+        {/*{formData.checkt === 'entreprise' && (
           <Form.Group controlId="carteBank">
             <Form.Label>Formulaire de Paiement</Form.Label>
             <Form.Control
@@ -133,7 +159,7 @@ const SignUp = () => {
               required
             />
           </Form.Group>
-        )}
+        )}*/}
 
         {formData.checkt === 'entreprise' && (
           <Form.Group controlId="image">

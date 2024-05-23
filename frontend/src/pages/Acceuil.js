@@ -221,7 +221,7 @@ function Acceuil(){
                      
                     </div>
                     <div>
-                        <input type="button" value="chercher" id="chercher" className="button bg-danger" style={{margin:'10px', height:'35px'}} onclick="RESTITUTION()"/>
+                        <input type="button" value="chercher" id="chercher" className="button bg-danger btn-custom" style={{margin:'10px', height:'35px'}} onclick="RESTITUTION()"/>
                     </div>
             </form>
           </div>

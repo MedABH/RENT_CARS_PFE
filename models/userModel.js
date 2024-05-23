@@ -8,7 +8,7 @@ const validateEmail = (email) => {
 
 const userSchema = new mongoose.Schema({
      checkt: { type: String, required: false },
-     name: { type: String, required: true },
+     name: { type: String, required: false },
      nameagence: { type: String, required: false },
      nump: { type: Number, required: true },
      numf: { type: Number, required: false }, // Corrected typo here
