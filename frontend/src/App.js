@@ -7,10 +7,9 @@ import About from "./pages/About";
 import Map from "./pages/Map";
 import Populaire from "./pages/Populaire";
 import SignUp from "./pages/profiles/SignUp";
-import ClientProfile from "./pages/profiles/ClientProfile";
 import AddCarDashboard from "./pages/profiles/AddCarDashboard";
-import AgenceProfile from "./pages/profiles/AgenceProfile";
 import CarDetail from "./pages/detail/CarDetail";
+import Account from "./pages/profiles/Account";
 
 function App() {
   return (
@@ -26,9 +25,8 @@ function App() {
           <Route path="/Populaire" element={<Populaire />}></Route>
           <Route path="/Map" element={<Map />}></Route>
           <Route path="/SignUp" element={<SignUp />}></Route>
-          <Route path="/client-profile" element={<ClientProfile/>}></Route>
-          <Route path="/agence-profile" element={<AgenceProfile/>} />
-          <Route path="/add-car" element={<AddCarDashboard/>} />
+          <Route path="/account" Component={Account}></Route>
+          <Route path="/AddCar" element={<AddCarDashboard/>} />
           <Route path="/cars/:id" element={<CarDetail />} />
         </Routes>
       </div>

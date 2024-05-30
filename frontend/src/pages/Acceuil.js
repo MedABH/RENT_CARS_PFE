@@ -77,7 +77,7 @@ function Acceuil(){
             <form action="index.php" method="get" className="" >
                 <div className="align-items-center justify-content-center">
                     <div className="form-check form-check-inline h-100 d-flex align-items-center justify-content-center text-white">
-                        <input id="checkty" className="form-check-input" type="checkbox"></input><div style={{marginRight:'40px', marginLeft:'6px'}}>LUX</div>
+                        <input id="checkty" className="form-check-input" type="checkbox"></input><div style={{marginRight:'40px', marginLeft:'6px'}}>LUXURY</div>
                         <input id="checkty" className="form-check-input" type="checkbox"></input><div style={{marginRight:'40px', marginLeft:'6px'}}>OFF ROAD</div>
                         <input id="checkty" className="form-check-input" type="checkbox"></input><div style={{marginRight:'40px', marginLeft:'6px'}}>STANDARD</div>
                     </div>
@@ -89,7 +89,7 @@ function Acceuil(){
                   <span className=""><i className="far fa-arrow-alt-circle-up"></i></span>
                 </div>
                 <div className="prise1">
-                  <p>PRISE EN CHARGE</p>
+                  <p>PICK-UP</p>
                 </div>
                 
 
@@ -153,7 +153,7 @@ function Acceuil(){
                     <span className=""><i className="far fa-arrow-alt-circle-down"></i></span>
                   </div>
                   <div className="prise1">
-                    <p>RESTITUTION</p>
+                    <p>DROP-OFF</p>
                   </div>
                   
 
@@ -216,12 +216,12 @@ function Acceuil(){
                       <span><i className="fas fa-car"></i></span>
                     </div>
                     <div className="prise1">
-                      <p>PRÉVOIR DES FRAIS SUPPLÉMENTAIRES<br/> SI RESTITUTION DANS<br/> UNE AUTRE VILLE<br/><br/></p>
+                      <p>EXPECT ADDITIONAL FEES<br/> IF RETURNED IN<br/>ANOTHER CITY<br/><br/></p>
                     </div>
                      
                     </div>
                     <div>
-                        <input type="button" value="chercher" id="chercher" className="button bg-danger btn-custom" style={{margin:'10px', height:'35px'}} onclick="RESTITUTION()"/>
+                        <input type="button" value="Search" id="chercher" className="button bg-danger btn-custom" style={{margin:'10px', height:'35px'}} onclick="RESTITUTION()"/>
                     </div>
             </form>
           </div>

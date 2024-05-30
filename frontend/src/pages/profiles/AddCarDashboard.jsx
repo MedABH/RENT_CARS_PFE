@@ -31,6 +31,7 @@ const AddCarDashboard = () => {
 
     return (
         <Container className="mt-5">
+            <br />
             <h2>Add New Car</h2>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="title">
@@ -78,6 +79,7 @@ const AddCarDashboard = () => {
                     Add Car
                 </Button>
             </Form>
+            <br />
         </Container>
     );
 };

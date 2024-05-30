@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -14,9 +15,13 @@ const SignUp = () => {
     carteb: '',
     cartenf: '',
     cartenb: '',
+    city: '',
+    address: '',
     reg: '',
     accepted: false,
   });
+
+  const navigate = useNavigate(); // Initialisez le hook useNavigate
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,11 +39,6 @@ const SignUp = () => {
       data.append(key, formData[key]);
     }
   
-    // Log the form data to the console
-    for (let pair of data.entries()) {
-      console.log(`${pair[0]}, ${pair[1]}`);
-    }
-  
     try {
       const response = await axios.post("http://localhost:3000/api/users", data, {
         headers: {
@@ -46,6 +46,7 @@ const SignUp = () => {
         },
       });
       console.log(response.data);
+      navigate('/');
     } catch (error) {
       console.error('Error:', error.response.data);
     }
@@ -55,6 +56,52 @@ const SignUp = () => {
     const file = e.target.files[0];
     setFormData({ ...formData, reg: file });
   };
+
+  // List of cities in Morocco (you can replace it with a more comprehensive list)
+  const moroccanCities = [
+  'Agadir',
+  'Al Hoceima',
+  'Azrou',
+  'Beni Mellal',
+  'Berkane',
+  'Boujdour',
+  'Bouznika',
+  'Casablanca',
+  'Chefchaouen',
+  'Dakhla',
+  'El Aioun',
+  'El Jadida',
+  'Errachidia',
+  'Essaouira',
+  'Fes',
+  'Guelmim',
+  'Ifrane',
+  'Kenitra',
+  'Khemisset',
+  'Khenifra',
+  'Khouribga',
+  'Laayoune',
+  'Larache',
+  'Marrakech',
+  'Meknes',
+  'Mohammedia',
+  'Nador',
+  'Ouarzazate',
+  'Oujda',
+  'Rabat',
+  'Safi',
+  'Salé',
+  'Sefrou',
+  'Settat',
+  'Sidi Kacem',
+  'Sidi Slimane',
+  'Skhirat',
+  'Tangier',
+  'Taroudant',
+  'Taza',
+  'Tétouan',
+  'Tiznit',
+  ];
 
   return (
     <Container className="mt-5">
@@ -71,7 +118,7 @@ const SignUp = () => {
               marginLeft: '54px',
               height: '100%'
             }}>Client</button>
-            <button name="checkt" onClick={() => setFormData({ ...formData, checkt: 'entreprise' })} className='col-5 btn-custom' style={{backgroundColor: 'red', color: 'white', border: '1 solid black', width: '40%', marginLeft: '54px', marginRight: '54px', height: '100%' }}>Agence</button>
+            <button name="checkt" onClick={() => setFormData({ ...formData, checkt: 'entreprise' })} className='col-5 btn-custom' style={{backgroundColor: 'red', color: 'white', border: '1 solid black', width: '40%', marginLeft: '54px', marginRight: '54px', height: '100%' }}>Agency</button>
           </div>
         </div>
         
@@ -90,7 +137,7 @@ const SignUp = () => {
 
         {formData.checkt === 'entreprise' && (
           <Form.Group controlId="agenceName">
-            <Form.Label>Agence Name</Form.Label>
+            <Form.Label>Agency Name</Form.Label>
             <Form.Control
               type="text"
               name="nameagence"
@@ -148,8 +195,39 @@ const SignUp = () => {
         </Form.Group>
 
         {formData.checkt === 'entreprise' && (
+          <Form.Group controlId="city">
+            <Form.Label>City</Form.Label>
+            <Form.Control
+              as="select"
+              name="city"
+              value={formData.city}
+              onChange={handleChange}
+              required
+            >
+              <option value=""></option>
+              {moroccanCities.map((city, index) => (
+                <option key={index} value={city}>{city}</option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+        )}
+
+        {formData.checkt === 'entreprise' && (
+        <Form.Group controlId="address">
+          <Form.Label>Address</Form.Label>
+          <Form.Control
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+        )}
+
+        {formData.checkt === 'entreprise' && (
           <Form.Group controlId="image">
-            <Form.Label>Image de Reg</Form.Label>
+            <Form.Label>Commercial Register</Form.Label>
             <Form.Control
               type="file"
               name="reg"
@@ -164,7 +242,7 @@ const SignUp = () => {
           <Form.Check
             type="checkbox"
             name="accepted"
-            label="Accepter les règles"
+            label="Accept the rules"
             checked={formData.accepted}
             onChange={(e) => setFormData({ ...formData, accepted: e.target.checked })}
             required
@@ -175,6 +253,7 @@ const SignUp = () => {
           Sign Up
         </Button>
       </Form>
+      <br/>
     </Container>
   );
 };
