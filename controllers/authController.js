@@ -22,12 +22,12 @@ exports.login = async (req, res) => {
         const payload = {
             user: {
                 id: user.id,
-                typeAccount: user.checkt,
+                checkt: user.checkt,
                 email: user.email,
-                fullName: user.name,
+                name: user.name,
                 nameagence: user.nameagence,
-                numberPhone: user.nump,
-                numberPhoneFix: user.numf,
+                nump: user.nump,
+                numf: user.numf,
                 carteb: user.carteb,
                 cartenf: user.cartenf,
                 cartenb: user.cartenb,

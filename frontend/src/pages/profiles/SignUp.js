@@ -104,15 +104,14 @@ const SignUp = () => {
   ];
 
   return (
-    <Container className="mt-5">
-      <br />
+    <Container className="mt-5" style={{marginBottom:'40px'}}>
       <Form onSubmit={handleSubmit}>
         <div className='row' style={{ width: '100%', height: '80px' }}>
           <div className='col' style={{ backgroundColor: '', width: '100%', height: '50%' }}>
             <button name="checkt" onClick={() => setFormData({ ...formData, checkt: 'client' })} className='col-5 btn-custom' style={{
               backgroundColor: 'red',
               color: 'white',
-              border: '1px solid black',
+              border: '1 solid black',
               width: '40%',
               marginRight: '54px',
               marginLeft: '54px',
@@ -253,7 +252,6 @@ const SignUp = () => {
           Sign Up
         </Button>
       </Form>
-      <br/>
     </Container>
   );
 };

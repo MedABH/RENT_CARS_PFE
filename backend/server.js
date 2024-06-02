@@ -8,9 +8,10 @@ const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
 const app = express();
 
-app.use(cors());
+
 
 //middleware:
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
@@ -25,16 +26,16 @@ admin.initializeApp({
     storageBucket: 'gs://location-82f7d.appspot.com',
   });
 
-//connect:
+// Démarrer le serveur
 mongoose.connect("mongodb://localhost:27017/location_db")
     .then(() => {
-        console.log("connected succes DB !");
+        console.log("connected successfully to DB!");
         app.listen(3000, () => {
-            console.log('listening 3000 !!!');
+            console.log('listening on port 3000!');
         });
     })
     .catch(() => {
-        console.log("errer to connect DB !")
+        console.log("error connecting to DB!");
     });
 
 

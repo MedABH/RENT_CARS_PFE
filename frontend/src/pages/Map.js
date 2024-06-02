@@ -40,7 +40,7 @@ function Map() {
     }
 
     return (
-        <div style={{ marginTop: '12px' }} className="">
+        <div style={{ marginTop: '' }} className="">
             {/*<div className="avant">
                 <div className="mapouter">
                     <div className="gmap_canvas">

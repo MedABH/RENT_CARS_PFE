@@ -17,7 +17,9 @@ function App() {
       <div>
         <Header />
       </div>
-      <div className="" style={{ marginTop: '50px' }}>
+      <div className="" style={{ marginTop: '' }}>
+        <div style={{height:'50px', backgroundColor:'black'}}>
+        </div>
         <Routes>
           <Route path="/" element={<Acceuil />}></Route>
           <Route path="/Lux" element={<Lux />}></Route>

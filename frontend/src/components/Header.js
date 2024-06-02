@@ -31,6 +31,10 @@ function Header() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const goSignUp = () => {navigate('/SignUp');};
+    const goAddCar = () => {navigate('/AddCar');};
+    const goAccount = () => {navigate('/Account');};
+
     const handleLogin = async () => {
         try {
             const response = await axios.post("http://localhost:3000/api/users/login", {
@@ -98,23 +102,23 @@ function Header() {
 
                         {isLoggedIn ? (
                             <>
-                                {user && user.typeAccount === 'entreprise' && (
-                                    <Button variant="success" style={{ width: '150px' }} className="btn-custom"><Link to='/AddCar' className="text-white">Add Car</Link></Button>
+                                {user && user.checkt === 'entreprise' && (
+                                    <Button variant="success" style={{ width: '150px' }} className="btn-custom" onClick={goAddCar}>Add Car</Button>
                                 )}
-                                <Button variant="danger" style={{ width: '150px' }} className="btn-custom"><Link to='/Account' className="text-white">Account</Link></Button>
+                                <Button variant="danger" style={{ width: '150px' }} className="btn-custom" onClick={goAccount}>Account</Button>
                                 <Button variant="danger" style={{ width: '150px' }} onClick={handleLogout} className="btn-custom">Logout</Button>
                             </>
                         ) : (
                             <>
-                                <Button variant="danger" style={{ width: '150px' }} className="btn-custom"><Link to='/SignUp' className="text-white">Sign up</Link></Button>
+                                <Button variant="danger" style={{ width: '150px' }} className="btn-custom" onClick={goSignUp}>Sign up</Button>
 
                                 <Button variant="danger" style={{ width: '150px' }} onClick={handleShow} className="btn-custom">Login</Button>
-                                <Modal show={show} onHide={handleClose} centered>
-                                    <Container>
-                                        <Modal.Header closeButton>
+                                <Modal show={show} onHide={handleClose} style={{height:''}} centered>
+                                    <Container style={{backgroundColor:'#FAFAFA',  height:'100%'}}>
+                                        <Modal.Header style={{backgroundColor:'#FAFAFA', height:'15%'}} closeButton>
                                             <img style={{ width: '70px', marginLeft: '180px' }} src="images\logo eLocation.png" alt="logo" />
                                         </Modal.Header>
-                                        <Modal.Body style={{ marginTop: '10px' }}>
+                                        <Modal.Body style={{ marginTop: '10px', backgroundColor:'#FAFAFA', height:'70%' }}>
                                             <p style={{ fontSize: '13px', textAlign: 'center' }}>Please enter your email address and your password.</p>
                                             <Form style={{ marginTop: '30px' }}>
                                                 <Form.Group className="mb-4 mt-4" controlId="exampleForm.ControlInput1">
@@ -139,7 +143,7 @@ function Header() {
                                             </Form>
                                         </Modal.Body>
                                     </Container>
-                                    <Modal.Footer style={{ marginTop: '20px' }} className="justify-content-center">
+                                    <Modal.Footer style={{ marginTop: '', backgroundColor:'#FAFAFA', height:'15%' }} className="justify-content-center">
                                         <Button style={{ width: '150px' }} variant="primary" onClick={handleLogin}>
                                             Login
                                         </Button>
@@ -148,14 +152,6 @@ function Header() {
                             </>
                         )}
                     </div>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" style={{}}>
-                        <div className="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </button>
                 </nav>
             </section>
             <br />

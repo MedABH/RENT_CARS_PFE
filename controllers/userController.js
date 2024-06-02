@@ -77,16 +77,22 @@ const createUser = async (req, res) => {
 // Update an existing user
 const updateUser = async (req, res) => {
     try {
-        const updatedUser = await userModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!updatedUser) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-        res.status(200).json(updatedUser);
+      const { id } = req.params;
+      const updateData = req.body;
+  
+      console.log('Updating user with ID:', id); // Log the user ID
+      console.log('Update Data:', JSON.stringify(updateData, null, 2)); // Log the update data
+  
+      const updatedUser = await userModel.findByIdAndUpdate(id, updateData, { new: true });
+      if (!updatedUser) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.status(200).json({ user: updatedUser });
     } catch (error) {
-        console.error('Error updating user:', error);
-        res.status(400).json({ message: error.message });
+      console.error('Error updating user:', error);
+      res.status(400).json({ message: error.message });
     }
-};
+  };
 
 // Delete a user
 const deleteUser = async (req, res) => {
