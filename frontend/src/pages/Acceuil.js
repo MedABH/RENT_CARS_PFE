@@ -1,6 +1,42 @@
+import React, { useState } from 'react';
+import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
+function Acceuil() {
+    const moroccanCities = [
+        'Agadir', 'Al Hoceima', 'Azrou', 'Beni Mellal', 'Berkane', 'Boujdour',
+        'Bouznika', 'Casablanca', 'Chefchaouen', 'Dakhla', 'El Aioun', 'El Jadida',
+        'Errachidia', 'Essaouira', 'Fes', 'Guelmim', 'Ifrane', 'Kenitra', 'Khemisset',
+        'Khenifra', 'Khouribga', 'Laayoune', 'Larache', 'Marrakech', 'Meknes', 'Mohammedia',
+        'Nador', 'Ouarzazate', 'Oujda', 'Rabat', 'Safi', 'Salé', 'Sefrou', 'Settat',
+        'Sidi Kacem', 'Sidi Slimane', 'Skhirat', 'Tangier', 'Taroudant', 'Taza', 'Tétouan', 'Tiznit',
+    ];
 
-function Acceuil(){
+    const [formData, setFormData] = useState({
+        luxury: false,
+        offRoad: false,
+        standard: false,
+        lieu: '',
+        datePrise: '',
+        timePrise: '',
+        dateDrop: '',
+        timeDrop: ''
+    });
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setFormData({
+            ...formData,
+            [name]: type === 'checkbox' ? checked : value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        navigate('/results', { state: { formData } });
+    };
 
     return(
         <div style={{marginTop:'', marginBottom:'', paddingBottom:''}}>
@@ -71,164 +107,144 @@ function Acceuil(){
 
 
             <div style={{}}>
-            <div className="header1" >
-        <div className="formElem">
-          <div className="reservation-item" >
-            <form action="index.php" method="get" className="" >
-                <div className="align-items-center justify-content-center">
-                    <div className="form-check form-check-inline h-100 d-flex align-items-center justify-content-center text-white">
-                        <input id="checkty" className="form-check-input" type="checkbox"></input><div style={{marginRight:'40px', marginLeft:'6px'}}>LUXURY</div>
-                        <input id="checkty" className="form-check-input" type="checkbox"></input><div style={{marginRight:'40px', marginLeft:'6px'}}>OFF ROAD</div>
-                        <input id="checkty" className="form-check-input" type="checkbox"></input><div style={{marginRight:'40px', marginLeft:'6px'}}>STANDARD</div>
+            <div className="header1">
+                <div className="formElem" style={{ width: '85%', height: '450px' }}>
+                    <div className="reservation-item" style={{ color: 'white' }}>
+                        <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '', padding: '20px' }}>
+                            <Row className="w-100" style={{ backgroundColor: 'rgba(18, 19, 18, 0.596)', backgroundPosition: 'center', marginTop: '5px' }}>
+                                <Col>
+                                    <Form onSubmit={handleSubmit} className="text-center" style={{ margin: '15px' }}>
+                                        <Row className="align-items-center justify-content-center mb-3">
+                                            <Col>
+                                                <Form.Check
+                                                    inline
+                                                    label="LUXURY"
+                                                    name="luxury"
+                                                    type="checkbox"
+                                                    checked={formData.luxury}
+                                                    onChange={handleChange}
+                                                    className="text-white"
+                                                />
+                                            </Col>
+                                            <Col>
+                                                <Form.Check
+                                                    inline
+                                                    label="OFF ROAD"
+                                                    name="offRoad"
+                                                    type="checkbox"
+                                                    checked={formData.offRoad}
+                                                    onChange={handleChange}
+                                                    className="text-white"
+                                                />
+                                            </Col>
+                                            <Col>
+                                                <Form.Check
+                                                    inline
+                                                    label="STANDARD"
+                                                    name="standard"
+                                                    type="checkbox"
+                                                    checked={formData.standard}
+                                                    onChange={handleChange}
+                                                    className="text-white"
+                                                />
+                                            </Col>
+                                        </Row>
+                                        <Form.Group className="mb-3">
+                                            <Form.Control
+                                                type="text"
+                                                name="lieu"
+                                                placeholder="Pick-up location"
+                                                value={formData.lieu}
+                                                onChange={handleChange}
+                                                style={{ margin: '10px', height: '35px' }}
+                                            />
+                                        </Form.Group>
+                                        <Row className="encharge mb-3" style={{ marginRight: '50px', marginTop: '10px', width:'250px' }}>
+                                            <Col className="d-flex flex-column align-items-center">
+                                                <span className="centered-icon"><i className="far fa-arrow-alt-circle-up"></i></span>
+                                                <strong>PICK-UP</strong>
+                                                <br />
+                                            </Col>
+                                            <Col>
+                                                <Form.Group>
+                                                    <Form.Control
+                                                        type="date"
+                                                        name="datePrise"
+                                                        value={formData.datePrise}
+                                                        onChange={handleChange}
+                                                        style={{ height: '35px' }}
+                                                    />
+                                                </Form.Group>
+                                                <Form.Group>
+                                                    <Form.Select
+                                                        name="timePrise"
+                                                        value={formData.timePrise}
+                                                        onChange={handleChange}
+                                                        style={{ height: '45px' }}
+                                                    >
+                                                        {[...Array(24)].map((_, hour) => (
+                                                            [...Array(2)].map((_, half) => (
+                                                                <option key={`${hour}:${half * 30}`} value={`${hour.toString().padStart(2, '0')}:${half * 30 === 0 ? '00' : '30'}`}>
+                                                                    {`${hour.toString().padStart(2, '0')}:${half * 30 === 0 ? '00' : '30'}`}
+                                                                </option>
+                                                            ))
+                                                        ))}
+                                                    </Form.Select>
+                                                </Form.Group>
+                                            </Col>
+                                        </Row>
+                                        <Row className="encharge mb-3" style={{width:'250px' }}>
+                                            <Col className="d-flex flex-column align-items-center">
+                                                <span className="centered-icon"><i className="far fa-arrow-alt-circle-down"></i></span>
+                                                <strong>DROP-OFF</strong>
+                                                <br />
+                                            </Col>
+                                            <Col>
+                                                <Form.Group>
+                                                    <Form.Control
+                                                        type="date"
+                                                        name="dateDrop"
+                                                        value={formData.dateDrop}
+                                                        onChange={handleChange}
+                                                        style={{ height: '35px' }}
+                                                    />
+                                                </Form.Group>
+                                                <Form.Group>
+                                                    <Form.Select
+                                                        name="timeDrop"
+                                                        value={formData.timeDrop}
+                                                        onChange={handleChange}
+                                                        style={{ height: '45px' }}
+                                                    >
+                                                        {[...Array(24)].map((_, hour) => (
+                                                            [...Array(2)].map((_, half) => (
+                                                                <option key={`${hour}:${half * 30}`} value={`${hour.toString().padStart(2, '0')}:${half * 30 === 0 ? '00' : '30'}`}>
+                                                                    {`${hour.toString().padStart(2, '0')}:${half * 30 === 0 ? '00' : '30'}`}
+                                                                </option>
+                                                            ))
+                                                        ))}
+                                                    </Form.Select>
+                                                </Form.Group>
+                                            </Col>
+                                        </Row>
+                                        <Row className="encharge mb-2">
+                                            <Col className="d-flex flex-column align-items-center" style={{ marginLeft: '80px', height: '' }}>
+                                                <span><i className="fas fa-car"></i></span>
+                                                <p style={{ fontSize: '15px' }}><br />EXPECT ADDITIONAL FEES<br /> IF RETURNED IN<br />ANOTHER CITY</p>
+                                            </Col>
+                                        </Row>
+                                        <div className="d-flex justify-content-center">
+                                            <Button type="submit" variant="danger" style={{ margin: '10px', height: '35px', width: '300px' }}>
+                                                Search
+                                            </Button>
+                                        </div>
+                                    </Form>
+                                </Col>
+                            </Row>
+                        </Container>
                     </div>
-                    <input name="lieu" id="lieu" style={{margin:'10px', height:'35px'}} placeholder="Pick-up location"></input>
                 </div>
-              <div className="encharge">
-
-                <div className="prise centered-icon" >
-                  <span className=""><i className="far fa-arrow-alt-circle-up"></i></span>
-                </div>
-                <div className="prise1">
-                  <p>PICK-UP</p>
-                </div>
-                
-
-                <div className="date">
-                <input type="date" name="dateprise" value="" id="mois" placeholder="date :" style={{height:'35px'}}/>
-                <select name="time" id="time" style={{height:'30px'}}>
-                    <optgroup>
-                        <option value="00:00">00:00</option>
-                        <option value="00:30">00:30</option>
-                        <option value="01:00">01:00</option>
-                        <option value="01:30">01:30</option>
-                        <option value="02:00">02:00</option>
-                        <option value="02:30">02:30</option>
-                        <option value="03:00">03:00</option>
-                        <option value="03:30">03:30</option>
-                        <option value="04:00">04:00</option>
-                        <option value="04:30">04:30</option>
-                        <option value="05:00">05:00</option>
-                        <option value="05:30">05:30</option>
-                        <option value="06:00">06:00</option>
-                        <option value="06:30">06:30</option>
-                        <option value="07:00">07:00</option>
-                        <option value="08:30">08:30</option>
-                        <option value="09:00">09:00</option>
-                        <option value="09:30">09:30</option>
-                        <option value="10:00">10:00</option>
-                        <option value="10:30">10:30</option>
-                        <option value="11:00">11:00</option>
-                        <option value="11:30">11:30</option>
-                        <option value="12:00">12:00</option>
-                        <option value="12:30">12:30</option>
-                        <option value="13:00">13:00</option>
-                        <option value="13:30">13:30</option>
-                        <option value="14:00">14:00</option>
-                        <option value="14:30">14:30</option>
-                        <option value="15:00">15:00</option>
-                        <option value="15:30">15:30</option>
-                        <option value="16:00">16:00</option>
-                        <option value="16:30">16:30</option>
-                        <option value="17:00">17:00</option>
-                        <option value="17:30">17:30</option>
-                        <option value="18:00">18:00</option>
-                        <option value="18:30">18:30</option>
-                        <option value="19:00">19:00</option>
-                        <option value="19:30">19:30</option>
-                        <option value="20:00">20:00</option>
-                        <option value="20:30">20:30</option>
-                        <option value="21:00">21:00</option>
-                        <option value="21:30">21:30</option>
-                        <option value="22:00">22:00</option>
-                        <option value="22:30">22:30</option>
-                        <option value="23:00">23:00</option>
-                        <option value="23:30">23:30</option>
-                    </optgroup>
-                </select>
-                </div>
-                </div>
-                <div className="encharge" id="encharge">
-
-                  <div className="prise centered-icon">
-                    <span className=""><i className="far fa-arrow-alt-circle-down"></i></span>
-                  </div>
-                  <div className="prise1">
-                    <p>DROP-OFF</p>
-                  </div>
-                  
-
-                  <div className="date">
-                  <input type="date" name="dateres" value="" id="mois" placeholder="date :" style={{height:'35px'}}/>
-                  <select name="time" id="time" style={{height:'30px'}}>
-                      <optgroup>
-                          <option value="00:00">00:00</option>
-                          <option value="00:30">00:30</option>
-                          <option value="01:00">01:00</option>
-                          <option value="01:30">01:30</option>
-                          <option value="02:00">02:00</option>
-                          <option value="02:30">02:30</option>
-                          <option value="03:00">03:00</option>
-                          <option value="03:30">03:30</option>
-                          <option value="04:00">04:00</option>
-                          <option value="04:30">04:30</option>
-                          <option value="05:00">05:00</option>
-                          <option value="05:30">05:30</option>
-                          <option value="06:00">06:00</option>
-                          <option value="06:30">06:30</option>
-                          <option value="07:00">07:00</option>
-                          <option value="08:30">08:30</option>
-                          <option value="09:00">09:00</option>
-                          <option value="09:30">09:30</option>
-                          <option value="10:00">10:00</option>
-                          <option value="10:30">10:30</option>
-                          <option value="11:00">11:00</option>
-                          <option value="11:30">11:30</option>
-                          <option value="12:00">12:00</option>
-                          <option value="12:30">12:30</option>
-                          <option value="13:00">13:00</option>
-                          <option value="13:30">13:30</option>
-                          <option value="14:00">14:00</option>
-                          <option value="14:30">14:30</option>
-                          <option value="15:00">15:00</option>
-                          <option value="15:30">15:30</option>
-                          <option value="16:00">16:00</option>
-                          <option value="16:30">16:30</option>
-                          <option value="17:00">17:00</option>
-                          <option value="17:30">17:30</option>
-                          <option value="18:00">18:00</option>
-                          <option value="18:30">18:30</option>
-                          <option value="19:00">19:00</option>
-                          <option value="19:30">19:30</option>
-                          <option value="20:00">20:00</option>
-                          <option value="20:30">20:30</option>
-                          <option value="21:00">21:00</option>
-                          <option value="21:30">21:30</option>
-                          <option value="22:00">22:00</option>
-                          <option value="22:30">22:30</option>
-                          <option value="23:00">23:00</option>
-                          <option value="23:30">23:30</option>
-                      </optgroup>
-                  </select>
-                  </div>
-                  </div>
-                  <div className="encharge">
-                    <div className="prise centered-icon">
-                      <span><i className="fas fa-car"></i></span>
-                    </div>
-                    <div className="prise1">
-                      <p>EXPECT ADDITIONAL FEES<br/> IF RETURNED IN<br/>ANOTHER CITY<br/><br/></p>
-                    </div>
-                     
-                    </div>
-                    <div>
-                        <input type="button" value="Search" id="chercher" className="button bg-danger btn-custom" style={{margin:'10px', height:'35px'}} onclick="RESTITUTION()"/>
-                    </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-                
+            </div>
         </div>
         </div>
     )

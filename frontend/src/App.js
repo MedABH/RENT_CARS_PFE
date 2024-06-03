@@ -10,6 +10,7 @@ import SignUp from "./pages/profiles/SignUp";
 import AddCarDashboard from "./pages/profiles/AddCarDashboard";
 import CarDetail from "./pages/detail/CarDetail";
 import Account from "./pages/profiles/Account";
+import SearchResults from "./pages/detail/SearchResults";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/account" Component={Account}></Route>
           <Route path="/AddCar" element={<AddCarDashboard/>} />
           <Route path="/cars/:id" element={<CarDetail />} />
+          <Route path="/results" element={<SearchResults />} />
         </Routes>
       </div>
       <div>

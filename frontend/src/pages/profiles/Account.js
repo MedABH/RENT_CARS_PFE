@@ -78,7 +78,7 @@ const Account = () => {
                     <Form.Control
                       type="text"
                       name="nump"
-                      value={formData.nump || ''}
+                      value={"0" + formData.nump || ''}
                       onChange={handleChange}
                     />
                   </Form.Group>
@@ -108,7 +108,7 @@ const Account = () => {
                     <Form.Control
                       type="text"
                       name="nump"
-                      value={formData.nump || ''}
+                      value={"0" + formData.nump || ''}
                       onChange={handleChange}
                     />
                   </Form.Group>
@@ -117,7 +117,7 @@ const Account = () => {
                     <Form.Control
                       type="text"
                       name="numf"
-                      value={formData.numf || ''}
+                      value={"0" + formData.numf || ''}
                       onChange={handleChange}
                     />
                   </Form.Group>

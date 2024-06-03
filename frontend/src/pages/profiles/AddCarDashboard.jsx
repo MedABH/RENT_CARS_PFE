@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from "react-router-dom";
 
 const AddCarDashboard = () => {
     const [carData, setCarData] = useState({
@@ -12,9 +13,12 @@ const AddCarDashboard = () => {
         capacity: '',
         fuelType: '',
         rentPerDay: '',
+        city: '',
         type: '',
         populaire: '0'
     });
+
+    const navigate = useNavigate();
 
     // Fetch account data from token
     const fetchAccountData = async () => {
@@ -31,7 +35,8 @@ const AddCarDashboard = () => {
             const accountData = await fetchAccountData();
             setCarData((prevData) => ({
                 ...prevData,
-                nameagence: accountData.nameagence || ''
+                nameagence: accountData.nameagence || '',
+                city: accountData.city || ''
             }));
         };
 
@@ -68,6 +73,7 @@ const AddCarDashboard = () => {
             });
             console.log('Car added successfully:', response.data);
             // You can reset the form here or show a success message
+            navigate('/');
         } catch (error) {
             console.error('Error adding car:', error.response ? error.response.data : error.message);
             // Handle the error (e.g., show an error message)

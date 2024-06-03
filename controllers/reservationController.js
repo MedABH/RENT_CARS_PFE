@@ -26,12 +26,15 @@ const getReservation = async (req, res) => {
 // Create a new reservation
 const postReservation = async (req, res) => {
     try {
+        console.log("Request body:", req.body); // Log request body
         const reservation = await reservationModel.create(req.body);
         res.status(200).json(reservation);
     } catch (error) {
+        console.error("Error creating reservation:", error); // Log specific error
         res.status(500).json({ message: error.message });
     }
 };
+
 
 // Update a reservation
 const updateReservation = async (req, res) => {

@@ -10,6 +10,7 @@ const carSchema = new mongoose.Schema({
     capacity: { type: Number, required: true },
     fuelType: { type: String, required: true },
     rentPerDay: { type: Number, required: true },
+    city: { type: String, required: false},
     type: {type: String, required: true},
     populaire: {type:Number, required:false}
 
