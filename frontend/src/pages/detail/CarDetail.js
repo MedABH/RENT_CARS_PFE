@@ -23,7 +23,8 @@ const CarDetail = () => {
     image: "",
     email: "",
     nump: "",
-    message: ""
+    message: "",
+    status: false
   });
 
   const navigate = useNavigate();
@@ -83,8 +84,9 @@ useEffect(() => {
     try {
         console.log("Submitting reservation data:", reservationData); // Log data before submission
         await axios.post('http://localhost:3000/api/reservations', reservationData);
-        alert('Reservation successful!');
+        alert('Reservation successful.\nWe will contact you as soon as possible.');
         setShowModal(false);
+        navigate('/account')
     } catch (error) {
         console.error('Error making reservation:', error.response ? error.response.data : error.message);
         alert('Reservation failed. Please try again later.');

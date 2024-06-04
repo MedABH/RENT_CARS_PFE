@@ -24,7 +24,8 @@ const reservationSchema = new mongoose.Schema({
         required: true,
         unique: false, // Temporarily set to false for testing
         validate: [validateEmail, 'Please fill a valid email address']
-    }
+    },
+    status: {type: Boolean, required: false}
 }, { timestamps: true });
 
 const reservationModel = mongoose.model('reservations', reservationSchema)

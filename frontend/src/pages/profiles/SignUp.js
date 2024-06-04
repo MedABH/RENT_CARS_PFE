@@ -18,7 +18,7 @@ const SignUp = () => {
     city: '',
     address: '',
     reg: '',
-    accepted: false,
+    accepted: false
   });
 
   const navigate = useNavigate(); // Initialisez le hook useNavigate
@@ -96,7 +96,7 @@ const SignUp = () => {
   'Sidi Kacem',
   'Sidi Slimane',
   'Skhirat',
-  'Tangier',
+  'Tanger',
   'Taroudant',
   'Taza',
   'Tétouan',
