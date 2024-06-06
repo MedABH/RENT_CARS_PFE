@@ -83,7 +83,7 @@ const AddCarDashboard = () => {
     return (
         <Container className="mt-5" style={{ marginBottom: '40px' }}>
             <br />
-            <h2>Add New Car</h2>
+            <h2 style={{marginBottom:'30px'}}>Add New Car</h2>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="title">
                     <Form.Label>Title</Form.Label>
@@ -95,7 +95,7 @@ const AddCarDashboard = () => {
                         required
                     />
                 </Form.Group>
-                <Form.Group controlId="type">
+                <Form.Group controlId="type" style={{marginTop:'15px'}}>
                     <Form.Label>Type</Form.Label>
                     <Form.Control
                         as="select"
@@ -110,7 +110,7 @@ const AddCarDashboard = () => {
                         <option value="standard">Standard</option>
                     </Form.Control>
                 </Form.Group>
-                <Form.Group controlId="description">
+                <Form.Group controlId="description" style={{marginTop:'15px'}}>
                     <Form.Label>Description</Form.Label>
                     <Form.Control
                         as="textarea"
@@ -121,7 +121,7 @@ const AddCarDashboard = () => {
                         required
                     />
                 </Form.Group>
-                <Form.Group controlId="price">
+                <Form.Group controlId="price" style={{marginTop:'15px'}}>
                     <Form.Label>Price (MAD per day)</Form.Label>
                     <Form.Control
                         type="number"
@@ -131,7 +131,7 @@ const AddCarDashboard = () => {
                         required
                     />
                 </Form.Group>
-                <Form.Group controlId="capacity">
+                <Form.Group controlId="capacity" style={{marginTop:'15px'}}>
                     <Form.Label>Capacity</Form.Label>
                     <Form.Control
                         type="number"
@@ -141,7 +141,7 @@ const AddCarDashboard = () => {
                         required
                     />
                 </Form.Group>
-                <Form.Group controlId="fuelType">
+                <Form.Group controlId="fuelType" style={{marginTop:'15px'}}>
                     <Form.Label>Fuel Type</Form.Label>
                     <Form.Control
                         type="text"
@@ -151,7 +151,7 @@ const AddCarDashboard = () => {
                         required
                     />
                 </Form.Group>
-                <Form.Group controlId="image">
+                <Form.Group controlId="image" style={{marginTop:'15px'}}>
                     <Form.Label>Image</Form.Label>
                     <Form.Control
                         type="file"

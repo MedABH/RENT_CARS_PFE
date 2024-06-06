@@ -95,7 +95,7 @@ function Header() {
                         </div>
                         <div className="right-menu">
                             <ul className="navbar-nav nav-dropdown" data-app-modern-menu="true">
-                                <li className="nav-item"><Link className="nav-link link text-white show text-primary display-4" to="/Populaire" aria-expanded="false" data-bs-auto-close="outside">POPULAIRE<div className="line-animation"></div></Link></li>
+                                <li className="nav-item"><Link className="nav-link link text-white show text-primary display-4" to="/Populaire" aria-expanded="false" data-bs-auto-close="outside">POPULAR<div className="line-animation"></div></Link></li>
                                 <li className="nav-item"><Link className="nav-link link text-white show text-primary display-4" to="/About" aria-expanded="false" data-bs-auto-close="outside">ABOUT<div className="line-animation"></div></Link></li>
                             </ul>
                         </div>

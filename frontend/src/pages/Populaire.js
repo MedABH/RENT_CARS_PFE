@@ -54,7 +54,7 @@ const Product = () => {
       <div className="container py-5">
         <div className="row">
           <div className="col-12 text-center">
-            <h1>Cars</h1>
+            <h1>Popular Cars</h1>
             <hr />
           </div>
         </div>

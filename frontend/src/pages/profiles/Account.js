@@ -208,6 +208,7 @@ const Account = () => {
           </Form>
         </Col>
         <Col md={6}>
+        {user.checkt === 'client' && (
           <Row>
             <h2>Reservation Details</h2>
             <Table striped bordered hover>
@@ -219,6 +220,7 @@ const Account = () => {
                   <th>City</th>
                   <th>Pickup Date</th>
                   <th>Return Date</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -228,21 +230,24 @@ const Account = () => {
                     <td>{reservation.nameCar}</td>
                     <td>{reservation.nameagence}</td>
                     <td>{reservation.city}</td>
-                    <td>{reservation.pickupDate}</td>
-                    <td>{reservation.returnDate}</td>
+                    <td>{reservation.pickupDate}<br/>{reservation.pickupTime}</td>
+                    <td>{reservation.returnDate}<br/>{reservation.returnTime}</td>
+                    <td>{reservation.status === true ? 'Valider' : 'En attente'}</td>
+                  
                   </tr>
                 ))}
               </tbody>
             </Table>
           </Row>
+        )}
           {user.checkt === 'entreprise' && (
-            <Row style={{marginTop:'25px'}}>
+            <Row style={{marginTop:'25px', marginLeft:'20px', width:'620px'}}>
               <h2>Client Requests</h2>
               <Table striped bordered hover>
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Client Name</th>
+                    <th>Client</th>
                     <th>Request Details</th>
                     <th>Actions</th>
                   </tr>
@@ -252,8 +257,8 @@ const Account = () => {
                     clientRequests.map((request, index) => (
                       <tr key={request._id}>
                         <td>{index + 1}</td>
-                        <td>{request.nameUser}<br/>{request.nump}<br/>{request.email}</td>
-                        <td>{request.nameCar}<br/>{request.message}</td>
+                        <td><strong>Name : </strong>{request.nameUser}<br/><strong>Number Phone : </strong>0{request.nump}<br/><strong>E-mail : </strong>{request.email}</td>
+                        <td><strong>Name Car : </strong>{request.nameCar}<br/><strong>PickupDate : </strong>{request.pickupDate}<br/><strong>PickupTime : </strong>{request.pickupTime}<br/><strong>ReturnDate : </strong>{request.returnDate}<br/><strong>ReturnTime : </strong>{request.returnTime}<br/><strong>Message : </strong>{request.message}</td>
                         <td>
                           <Button 
                             variant="success" 

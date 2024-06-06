@@ -83,8 +83,9 @@ function SearchResults() {
                         <hr />
                     </div>
                     <div className="col-12 text-center">
+                    <h6>Sort By :</h6>
                         <select onChange={handleSortChange} value={sortCriteria} className="form-select" style={{ width: "200px", margin: "0 auto" }}>
-                            <option value="">Sort By</option>
+                            <option value=""></option>
                             <option value="price">Price</option>
                             <option value="popularity">Popularity</option>
                         </select>
